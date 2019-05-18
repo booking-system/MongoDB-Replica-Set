@@ -42,6 +42,12 @@ TODO
  ```
   docker-machine create -d virtualbox slave-mongo2
  ```
+ - 运行脚本
+ ```
+  bash < create-replica-set.sh
+ ```
+ - 连接主数据库
+  这时候就可以用啦。
   ### 检验
   ```
     docker-machine ls -a 
@@ -74,5 +80,8 @@ TODO
 
 * 项目灵感来源于@Cristian Ramirez，对此衷心感谢。
 
+## FAQ
+  1. Q:主数据库的IP是多少？ A: 一般情况，通过```docker-machine ls```查看第一个结点的ip就是，如果该结点停止过，那么主数据库自动迁移至后结点数据库。
+    
 ## 最终完成目标
 ![docker with mongodb架构图](images/docker-mongodb.png)
