@@ -25,22 +25,58 @@ docker-machine --version
 
 ## 运行测试
 
-TODO
+```
+docker exec -it mongoNode1 bash -c 'mongo -u $MONGO_USER_ADMIN -p $MONGO_PASS_ADMIN --authenticationDatabase "admin"'
+```
+```
+use admin
+```
+
+  ***
+  注意：这里是root权限，产品环境中尽可能不采用
+```
+db.grantRolesToUser( "cristian", [ "root" , { role: "root", db: "admin" } ] )
+```
+```
+  use movies
+```
+
+```
+  db.movies.insertMany([{
+  id: '1',
+  title: 'Assasins Creed',
+  runtime: 115,
+  format: 'IMAX',
+  plot: 'Lorem ipsum dolor sit amet',
+  releaseYear: 2017,
+  releaseMonth: 1,
+  releaseDay: 6
+}, {
+  id: '2',
+  title: 'Aliados',
+  runtime: 124,
+  format: 'IMAX',
+  plot: 'Lorem ipsum dolor sit amet',
+  releaseYear: 2017,
+  releaseMonth: 1,
+  releaseDay: 13
+}])
+```
 
 
 ## 教程
 
  - 创建3个虚拟机，每个虚拟机里运行一个docker
  ```
-  docker-machine create -d virtualbox main-manager
+  docker-machine create -d virtualbox manager1
  ```
   
  ```
-  docker-machine create -d virtualbox slave-mongo1
+  docker-machine create -d virtualbox workder1
  ```
   
  ```
-  docker-machine create -d virtualbox slave-mongo2
+  docker-machine create -d virtualbox worker2
  ```
  - 运行脚本
  ```
