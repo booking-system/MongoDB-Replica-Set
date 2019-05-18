@@ -23,6 +23,28 @@ docker-machine --version
   
   在操作过程中，我们发现建立集群的条件必须是一台完整的物理机。如果在阿里云ECS或者类型的虚拟化机器上是无法再次创建虚拟机的，所以，请注意该项目需要在物理机上开展并且开启了虚拟化。
 
+
+## 教程
+
+ - 创建3个虚拟机，每个虚拟机里运行一个docker
+ ```
+  docker-machine create -d virtualbox manager1
+ ```
+  
+ ```
+  docker-machine create -d virtualbox workder1
+ ```
+  
+ ```
+  docker-machine create -d virtualbox worker2
+ ```
+ - 运行脚本
+ ```
+  bash < create-replica-set.sh
+ ```
+ - 连接主数据库
+  这时候就可以用啦。
+  
 ## 运行测试
 
 ```
@@ -64,30 +86,6 @@ db.grantRolesToUser( "cristian", [ "root" , { role: "root", db: "admin" } ] )
 ```
 
 
-## 教程
-
- - 创建3个虚拟机，每个虚拟机里运行一个docker
- ```
-  docker-machine create -d virtualbox manager1
- ```
-  
- ```
-  docker-machine create -d virtualbox workder1
- ```
-  
- ```
-  docker-machine create -d virtualbox worker2
- ```
- - 运行脚本
- ```
-  bash < create-replica-set.sh
- ```
- - 连接主数据库
-  这时候就可以用啦。
-  ### 检验
-  ```
-    docker-machine ls -a 
-  ```
 ## 参考资料
 
 * [mongodb replica set](https://docs.mongodb.com/manual/tutorial/deploy-replica-set/) -  mongdo replica set官方参考资料
