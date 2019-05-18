@@ -1,6 +1,7 @@
 # mongdoDB replica set
 
 本项目主要用来搭建docker集群中的mongodb replica set
+![mongodb replica set架构图](images/mongodb-replica-set.png)
 
 ## 为什么会出现这个项目
 
@@ -56,3 +57,5 @@ TODO
 
 * 项目灵感来源于@Cristian Ramirez，对此衷心感谢。
 
+## 最终完成目标
+![docker with mongodb架构图](images/docker-mongodb.png)
