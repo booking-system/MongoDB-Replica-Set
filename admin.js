@@ -9,6 +9,7 @@ admin.createUser(
   }
 )
 // let's authenticate to create the other user
+// 关于replica set，如何判断哪一个是primary?
 db.getSiblingDB("admin").auth("cristian", "cristianPassword2017" )
 // creation of the replica set admin user
 db.getSiblingDB("admin").createUser(
